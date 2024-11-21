@@ -20,7 +20,7 @@ jobs:
         with:
           file: src/docker/Dockerfile.base
           context: src
-          tags: gz-sim:base
+          tags: user/gz-sim:base
           load: true
       - name: build nightly image
         uses: docker/build-push-action@v6
