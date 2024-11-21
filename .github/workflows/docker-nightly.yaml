@@ -15,10 +15,14 @@ jobs:
           repository: ntfshard/gz-sim # gazebosim/gz-sim
           ref: dockerbuildfix
           path: src
-      - uses: docker/build-push-action@v6
+      - name: build base image
+        uses: docker/build-push-action@v6
         with:
           file: src/docker/Dockerfile.base
           context: src
           tags: gz-sim:base
-# docker build . -f ./docker/Dockerfile.base -t gz-sim:base
-# docker build . -f ./docker/Dockerfile.nightly -t gz-sim:nightly
+      - name: build nightly image
+        uses: docker/build-push-action@v6
+        with:
+          file: src/docker/Dockerfile.nightly
+          context: src
